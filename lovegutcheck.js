@@ -1,62 +1,29 @@
-document.addEventListener('DOMContentLoaded', function () {
-    // Initialize global variables
-    window.currentQuestion = 0;
-    window.scores = { dynamo: 0, wreck: 0 };
+<!-- Previous questions (q0 to q8) remain the same -->
 
-    // Start quiz button
-    document.getElementById('start-quiz').addEventListener('click', function () {
-        window.currentQuestion = 0;
-        window.scores = { dynamo: 0, wreck: 0 };
-        var intro = document.getElementById('intro-container');
-        var q0 = document.getElementById('q0');
-        if (intro) intro.style.display = 'none';
-        if (q0) q0.style.display = 'block';
-    });
+<div id="q9" class="question">
+    <h1>Are you ready for a relationship?</h1>
+    <button class="answer-btn" data-dynamo="3" data-wreck="0">Hell yeah, bring it!</button>
+    <button class="answer-btn" data-dynamo="2" data-wreck="1">Maybe, depends.</button>
+    <button class="answer-btn" data-dynamo="1" data-wreck="2">Not sure, it’s messy.</button>
+    <button class="answer-btn" data-dynamo="0" data-wreck="3">Nope, single life’s fine.</button>
+</div>
 
-    // Add click listeners to all answer buttons
-    document.querySelectorAll('.answer-btn').forEach(function (button) {
-        button.addEventListener('click', function () {
-            // Update scores
-            var dynamo = parseInt(this.getAttribute('data-dynamo'));
-            var wreck = parseInt(this.getAttribute('data-wreck'));
-            window.scores.dynamo += dynamo;
-            window.scores.wreck += wreck;
+<div id="q10" class="question">
+    <h1>Someone cuts you off in convo. You…</h1>
+    <button class="answer-btn" data-dynamo="0" data-wreck="0" data-assertive="3" data-passive="0" data-aggressive="0" data-passiveAggressive="0">Speak up firmly.</button>
+    <button class="answer-btn" data-dynamo="0" data-wreck="0" data-assertive="0" data-passive="3" data-aggressive="0" data-passiveAggressive="1">Stay quiet.</button>
+    <button class="answer-btn" data-dynamo="0" data-wreck="0" data-assertive="0" data-passive="0" data-aggressive="3" data-passiveAggressive="0">Snap back hard.</button>
+    <button class="answer-btn" data-dynamo="0" data-wreck="0" data-assertive="0" data-passive="0" data-aggressive="1" data-passiveAggressive="3">Make a shady comment.</button>
+</div>
 
-            // Move to next question
-            window.currentQuestion++;
-            var currentQ = document.getElementById('q' + (window.currentQuestion - 1));
-            var nextQ = document.getElementById('q' + window.currentQuestion);
-            var scoreContainer = document.getElementById('score-container');
-            var scoreText = document.getElementById('score-text');
+<div id="q11" class="question">
+    <h1>Your partner forgets plans. You…</h1>
+    <button class="answer-btn" data-dynamo="0" data-wreck="0" data-assertive="3" data-passive="0" data-aggressive="0" data-passiveAggressive="0">Talk it out calmly.</button>
+    <button class="answer-btn" data-dynamo="0" data-wreck="0" data-assertive="0" data-passive="3" data-aggressive="0" data-passiveAggressive="1">Let it slide.</button>
+    <button class="answer-btn" data-dynamo="0" data-wreck="0" data-assertive="0" data-passive="0" data-aggressive="3" data-passiveAggressive="0">Yell about it.</button>
+    <button class="answer-btn" data-dynamo="0" data-wreck="0" data-assertive="0" data-passive="0" data-aggressive="0" data-passiveAggressive="3">Give them the silent treatment.</button>
+</div>
 
-            setTimeout(function () {
-                if (currentQ) currentQ.style.display = 'none';
+<!-- Add more questions (q12 to q19) following the same pattern if needed -->
 
-                if (window.currentQuestion < 10) {
-                    // Show next question
-                    if (nextQ) {
-                        nextQ.style.display = 'block';
-                    } else {
-                        console.warn('Question ' + window.currentQuestion + ' not found, DOM might not be ready, skipping to score');
-                        if (scoreContainer) scoreContainer.style.display = 'block';
-                        if (scoreText) {
-                            var datingScore = window.scores.dynamo >= window.scores.wreck ?
-                                `Dating Dynamo! (${window.scores.dynamo}/30) You’re slaying the dating game… mostly.` :
-                                `Total Wreck! (${window.scores.wreck}/30) Your love life’s a hot mess—time to level up!`;
-                            scoreText.innerHTML = datingScore;
-                        }
-                    }
-                } else {
-                    // Show score page
-                    if (scoreContainer) scoreContainer.style.display = 'block';
-                    if (scoreText) {
-                        var datingScore = window.scores.dynamo >= window.scores.wreck ?
-                            `Dating Dynamo! (${window.scores.dynamo}/30) You’re slaying the dating game… mostly.` :
-                            `Total Wreck! (${window.scores.wreck}/30) Your love life’s a hot mess—time to level up!`;
-                        scoreText.innerHTML = datingScore;
-                    }
-                }
-            }, 100);
-        });
-    });
-});
+<!-- The rest of the embed code (score container, CSS, and script tag) remains the same -->
